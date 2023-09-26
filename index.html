@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Countdown Timer</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Prevent video overflow */
+            font-size: 48px;
+            font-family: 'CustomFont', Arial, sans-serif; /* Use the custom font here */
+        }
+
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('http://10.201.40.50/file/MKTG/HTML-Hacks/Testing/PODIUMSharp-7.11italic.ttf');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        #countdown-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+        #countdown {
+            font-weight: bold;
+            font-size: 200px;
+        }
+
+        #custom-text {
+            font-size: 110px; /* Adjust the font size as needed */
+            margin-top: 10px; /* Adjust the top margin as needed */
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown-container">
+        <div id="countdown"></div>
+        <div id="custom-text">TO BOUNCE</div>
+    </div>
+    
+    <script>
+        // Set the target time (2:30 PM AEST)
+        const targetTime = new Date();
+        targetTime.setHours(14);
+        targetTime.setMinutes(30);
+        targetTime.setSeconds(0);
+        targetTime.setMilliseconds(0);
+
+        function updateCountdown() {
+            const currentTime = new Date();
+            const timeRemaining = targetTime - currentTime;
+
+            if (timeRemaining <= 0) {
+                document.getElementById('countdown').innerHTML = '00:00';
+            } else {
+                const minutes = Math.floor(timeRemaining / (1000 * 60));
+                const seconds = Math.floor((timeRemaining / 1000) % 60);
+                const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+                const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+
+                document.getElementById('countdown').innerHTML = `${formattedMinutes}:${formattedSeconds}`;
+            }
+        }
+
+        // Update the countdown every second
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
