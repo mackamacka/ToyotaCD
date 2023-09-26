@@ -7,14 +7,13 @@
             height: 100%;
             margin: 0;
             overflow: hidden; /* Prevent video overflow */
-            font-size: 48px;
+            font-size: 240px;
             font-family: 'CustomFont', Arial, sans-serif; /* Use the custom font here */
         }
 
         @font-face {
             font-family: 'CustomFont';
             src: url('http://10.201.40.50/file/MKTG/HTML-Hacks/Testing/PODIUMSharp-7.11italic.ttf');
-            font-weight: normal;
             font-style: normal;
         }
 
@@ -36,6 +35,16 @@
             font-size: 110px; /* Adjust the font size as needed */
             margin-top: 10px; /* Adjust the top margin as needed */
         }
+
+        #video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Ensure the video is behind the countdown text */
+        }
     </style>
 </head>
 <body>
@@ -44,6 +53,10 @@
         <div id="custom-text">TO BOUNCE</div>
     </div>
     
+    <video id="video-background" autoplay muted loop>
+        <source src="http://10.201.40.50/file/MKTG/HTML-Hacks/Testing/2052911%20-%20MKTG%20-%20Grand%20Final%20Coll%20V%20Bris%20Countdown%20FOR%20TESTING%20-%20IPTV-FULL-21.mp4" type="video/mp4"> <!-- Replace 'your-video.mp4' with your video file path -->
+    </video>
+
     <script>
         // Set the target time (2:30 PM AEST)
         const targetTime = new Date();
